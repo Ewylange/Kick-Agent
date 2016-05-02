@@ -13,7 +13,7 @@
 	{
 		// No culling or depth
 		Cull Off ZWrite Off ZTest Always
-		//Blend SrcAlpha OneMinusSrcAlpha
+		Blend SrcAlpha OneMinusSrcAlpha
 
 		Tags{"Queue" = "Transparent" "RenderType" = "Transparent"}
 
@@ -30,6 +30,9 @@
 			{
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
+
+//
+//				float2 mn : TEXTCOORD0;
 			
 			};
 
@@ -38,6 +41,10 @@
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
 					float elevation : TEXCOORD1;
+
+//					float2 mn : TEXTCOORD0;
+
+
 			};
 
 			v2f vert (appdata v)
@@ -52,6 +59,13 @@
 
 //				o.elevation = elevation * 0.5 + 0.5;
 				return o;
+
+//				float4 position2 = n.vertex;
+//
+//				v2f q;
+//				q.vertex = mul(UNITY_MATRIX_MVP, position2);
+//				q.mn = n.mn
+//				return q;
 			}
 			
 			sampler2D _MainTex;
