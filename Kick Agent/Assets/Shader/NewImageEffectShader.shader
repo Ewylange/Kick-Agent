@@ -22,6 +22,7 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+//			#pragma fragment2 frag2
 			
 			#include "UnityCG.cginc"
 
@@ -63,8 +64,8 @@
 			{
 
 			// FIRST TEST 
-				float x = i.uv.x - 0.5f;
-				float y = i.uv.y - 0.5f;
+				float x = i.uv.x - 0.35f;
+				float y = i.uv.y - 0.65f;
 				float r2 = x*x + y*y;
 				float r = sqrt(r2);
 //
@@ -73,6 +74,8 @@
 					return tex2D(_MainTex, i.uv);
 				return fixed4(0,0,0,0);
 
+
+			
 // 			SMOOTHING REBORD DU CERCLE 
 //			float x = i.uv.x - 0.5f;
 //				float y = i.uv.y - 0.5f;
