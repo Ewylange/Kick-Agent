@@ -3,7 +3,7 @@ using System.Collections;
 
 public class KickAgent : MonoBehaviour 
 {
-	
+	public Score score;
 	RaycastHit hitAgent;
 	Ray ray;
 	float limitDetection = 1000;
@@ -42,6 +42,7 @@ public class KickAgent : MonoBehaviour
 				// Détruire Agent 
 				agentToKill = hitAgent.collider.gameObject;
 				Destroy(agentToKill);
+				score.IncrementScore();
 				Debug.Log("Score + 1");
 				// Augmenter le score
 			}

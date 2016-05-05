@@ -11,7 +11,6 @@ public class Score : MonoBehaviour {
 	public Text highScoreText;
 	public int score = 0;
 	[HideInInspector]public int highScore = 0;
-	public GameObject newHighscore;
 
 	public bool autoSave = true ;
 	public Vector3 pos;
@@ -54,6 +53,14 @@ public class Score : MonoBehaviour {
 
 		UpdateTexts ();
 	}
+
+	public void DecrementScore () {
+		
+		score -= 10 ;
+		
+		UpdateTexts ();
+	}
+
 
 	public void SaveHighscore () {
 

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class AgentScript : MonoBehaviour {
 
+	public Score score;
 
 	NavMeshAgent agent;
 	public GameObject GatherPoint;
@@ -28,8 +29,9 @@ public class AgentScript : MonoBehaviour {
 		if(distanceToGatherPoint < onCircle) 
 		{	
 			Debug.Log("Agent on Gather Point ");
-			// Détruire et enlever des points ? TRouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
+			// Détruire et enlever des points ? Trouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
 			Destroy(this.gameObject);
+			score.DecrementScore();
 			Debug.Log("Score -1");
 		}
 		//canKickAgent = false;
