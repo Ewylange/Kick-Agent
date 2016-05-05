@@ -29,9 +29,11 @@ public class AgentScript : MonoBehaviour {
 		{	
 			Debug.Log("Agent on Gather Point ");
 			// Détruire et enlever des points ? TRouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
-
+			Destroy(this.gameObject);
+			Debug.Log("Score -1");
 		}
-		canKickAgent = false;
+		//canKickAgent = false;
+		canKickAgent = true;
 		if (distanceToGatherPoint < activKickGatherPoint) 
 		{
 			canKickAgent = true;

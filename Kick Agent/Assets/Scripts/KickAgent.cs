@@ -7,6 +7,7 @@ public class KickAgent : MonoBehaviour
 	RaycastHit hitAgent;
 	Ray ray;
 	float limitDetection = 1000;
+	GameObject agentToKill;
 	
 	public AgentScript _scriptAgent;
 	// Use this for initialization
@@ -39,7 +40,10 @@ public class KickAgent : MonoBehaviour
 			{	
 				Debug.Log("Agent Touché !! ");
 				// Détruire Agent 
-				// Augmenter le score 
+				agentToKill = hitAgent.collider.gameObject;
+				Destroy(agentToKill);
+				Debug.Log("Score + 1");
+				// Augmenter le score
 			}
 		}
 	}

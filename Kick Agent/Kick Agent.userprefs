@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
 <<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
@@ -10,6 +11,14 @@
     <Files>
       <File FileName="Assets/Scripts/AgentScript.cs" Line="11" Column="36" />
 >>>>>>> a9f237b278ef5f76a3a18054d67d57a0bc558004
+=======
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\KickAgent.cs">
+    <Files>
+      <File FileName="Assets\Scripts\AgentScript.cs" Line="40" Column="4" />
+      <File FileName="Assets\Scripts\KickAgent.cs" Line="1" Column="1" />
+>>>>>>> 677484a8b93133e854c93c8907ac544126a392ea
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
