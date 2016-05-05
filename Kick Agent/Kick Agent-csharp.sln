@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{602FA690-5BC3-D3DE-B377-D0B1B7738F73}") = "Kick Agent", "Assembly-CSharp-vs.csproj", "{62F9FBF9-B1AF-D620-910B-6B1D71FFC6EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62F9FBF9-B1AF-D620-910B-6B1D71FFC6EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F9FBF9-B1AF-D620-910B-6B1D71FFC6EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F9FBF9-B1AF-D620-910B-6B1D71FFC6EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F9FBF9-B1AF-D620-910B-6B1D71FFC6EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+														GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+
+EndGlobal
