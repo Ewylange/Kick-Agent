@@ -7,11 +7,12 @@ public class SoundsPlayer : MonoBehaviour {
 	/// <summary>
 	/// Singleton
 	/// </summary>
-	public SoundsPlayer Instance ;
+	public static SoundsPlayer Instance ;
 
 	public AudioClip explosionSound;
 	public AudioClip agentArrivalSound;
-	public AudioClip shotSound;
+	public AudioClip shot1Sound;
+	public AudioClip shot2Sound;
 
 	void Awake (){
 		/*if (Instance != null) {
@@ -29,8 +30,12 @@ public class SoundsPlayer : MonoBehaviour {
 		MakeSound (agentArrivalSound);
 	}
 
-	public void MakeShotSound (){
-		MakeSound (shotSound);
+	public void MakeShot1Sound (){
+		MakeSound (shot1Sound);
+	}
+
+	public void MakeShot2Sound (){
+		MakeSound (shot2Sound);
 	}
 
 
