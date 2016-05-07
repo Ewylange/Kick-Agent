@@ -12,7 +12,7 @@ public class AgentScript : MonoBehaviour {
 	public float activKickGatherPoint;
 	public float distanceCircleRight;
 	float onCircle = 1.5f;
-
+	public PopAgent _scriptPopAgent;
 
 	// Use this for initialization
 	void Start () 
@@ -31,8 +31,11 @@ public class AgentScript : MonoBehaviour {
 			Debug.Log("Agent on Gather Point ");
 			// Détruire et enlever des points ? Trouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
 			Destroy(this.gameObject);
+			_scriptPopAgent.compteurAgent -=1;
 			score.DecrementScore();
+
 			Debug.Log("Score -1");
+
 		}
 		//canKickAgent = false;
 		canKickAgent = true;
