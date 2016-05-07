@@ -32,7 +32,7 @@ public class KickAgent : MonoBehaviour
 	{
 		
 		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		Debug.DrawRay (ray.origin, -this.transform.forward * limitDetection);
+	//	Debug.DrawRay (ray.origin, -this.transform.forward * limitDetection);
 		
 		if(Physics.Raycast(ray, out hitAgent, limitDetection))
 		{
