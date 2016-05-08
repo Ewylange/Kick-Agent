@@ -11,7 +11,7 @@ public class KickAgent : MonoBehaviour
 
 	public GameObject explosion;
 
-	AgentScript _scriptAgent;
+	AgentScript _scriptAgent = null;
 	public GameObject agent;
 
 	LayerMask shader;
@@ -40,7 +40,7 @@ public class KickAgent : MonoBehaviour
 					// Détruire Agent 
 					agentToKill = hitAgent.collider.gameObject;
 					Debug.Log(_scriptAgent.canKickAgent);
-					if( _scriptAgent.canKickAgent == true)
+					if(agentToKill.GetComponent<AgentScript>().canKickAgent == true)
 					{
 						Destroy(agentToKill);
 						Debug.Log("Agent Détruit");

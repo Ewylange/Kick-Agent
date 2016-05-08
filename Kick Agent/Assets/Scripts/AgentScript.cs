@@ -9,7 +9,7 @@ public class AgentScript : MonoBehaviour {
 	public GameObject GatherPoint;
 	public float distanceToGatherPoint;
 	public float rayonGatherPoint;
-	public bool canKickAgent;
+	public bool canKickAgent = false;
 //	public float distanceToPoint;
 //	public float rayonPoint;
 	public float distanceCircleRight;
@@ -51,6 +51,8 @@ public class AgentScript : MonoBehaviour {
 			Debug.Log("Score -1");
 
 		}
+
+
 		//canKickAgent = true;
 		//canKickAgent = true;
 //		if (distanceToGatherPoint <= rayonGatherPoint) 

@@ -23,6 +23,7 @@ public class PopAgent : MonoBehaviour
 	public float speedMax;
 
 	int position;
+	int typeAgent;
 
 	//	public void PoolSystem ()
 	//	{
@@ -46,6 +47,7 @@ public class PopAgent : MonoBehaviour
 	{
 		speedAgent = Random.Range(speedMin, speedMax);
 		position = Random.Range(0,1);
+		typeAgent = Random.Range(0,2);
 	}
 
 	void FixedUpdate () 
@@ -75,6 +77,25 @@ public class PopAgent : MonoBehaviour
 		agentNavmesh.speed = speedAgent ;
 		agentInstance.tag = "Agent";
 		agentInstance.SetActive(true);
+
+		if(typeAgent == 0)
+		{
+			// TAG AGENT BASIC
+			// ADD SCRIPT AGENT BASIC
+
+		}
+
+		if(typeAgent == 1)
+		{
+			// TAG AGENT Get OUT OF LIGHT RAPIDlY
+			// ADD SCRIPT AgentGetOutOfLight
+		}
+
+		if(typeAgent == 2) 
+		{
+			// Tag Agent Demultiplicateur
+			// Add AgentDemultiplicateur
+		}
 	}
 
 }
