@@ -8,7 +8,9 @@ public class KickAgent : MonoBehaviour
 	Ray ray;
 	float limitDetection = 1000;
 	GameObject agentToKill;
-	
+
+	public GameObject explosion;
+
 	public AgentScript _scriptAgent;
 	// Use this for initialization
 	void Start () 
@@ -42,7 +44,9 @@ public class KickAgent : MonoBehaviour
 				// Détruire Agent 
 				agentToKill = hitAgent.collider.gameObject;
 				Destroy(agentToKill);
+				GameObject Exploded = Instantiate(explosion, hitAgent.transform.position, Quaternion.identity) as GameObject;
 				score.IncrementScore();
+				Destroy(Exploded,0.32f);
 				Debug.Log("Score + 1");
 				// Augmenter le score
 			}
