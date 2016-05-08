@@ -30,6 +30,7 @@ public class AgentScript : MonoBehaviour {
 		{	
 			Debug.Log("Agent on Gather Point ");
 			// Détruire et enlever des points ? Trouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
+			SoundsPlayer.Instance.MakeAgentArrivalSound();
 			Destroy(this.gameObject);
 			_scriptPopAgent.compteurAgent -=1;
 			score.DecrementScore();

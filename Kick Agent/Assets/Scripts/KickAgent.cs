@@ -23,6 +23,13 @@ public class KickAgent : MonoBehaviour
 	{
 		if(Input.GetMouseButtonDown(0)) 
 		{
+			int shot = Random.Range(0,2);
+			if (shot == 1){
+				SoundsPlayer.Instance.MakeShot1Sound();
+			}else {
+				SoundsPlayer.Instance.MakeShot2Sound();
+			}
+
 			DetectAgent();
 		}
 		
@@ -44,11 +51,12 @@ public class KickAgent : MonoBehaviour
 				// Détruire Agent 
 				agentToKill = hitAgent.collider.gameObject;
 				Destroy(agentToKill);
+				SoundsPlayer.Instance.MakeExplosionSound();
 				GameObject Exploded = Instantiate(explosion, hitAgent.transform.position, Quaternion.identity) as GameObject;
 				score.IncrementScore();
-				Destroy(Exploded,0.32f);
 				Debug.Log("Score + 1");
 				// Augmenter le score
+				Destroy(Exploded,0.32f);
 			}
 		}
 	}
