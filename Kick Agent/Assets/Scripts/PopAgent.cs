@@ -8,7 +8,10 @@ public class PopAgent : MonoBehaviour
 	//public float sizePool;
 
 	public float compteurAgent;
-	public float sizeCam;
+	public float sizeRectX1;
+	public float sizeRectZ1;
+	public float sizeRectX2;
+	public float sizeRectZ2;
 
 	public float nbreMaxAgent;
 
@@ -18,6 +21,8 @@ public class PopAgent : MonoBehaviour
 	float speedAgent;
 	public float speedMin;
 	public float speedMax;
+
+	int position;
 
 	//	public void PoolSystem ()
 	//	{
@@ -40,6 +45,7 @@ public class PopAgent : MonoBehaviour
 	void Update()
 	{
 		speedAgent = Random.Range(speedMin, speedMax);
+		position = Random.Range(0,1);
 	}
 
 	void FixedUpdate () 
@@ -56,10 +62,18 @@ public class PopAgent : MonoBehaviour
 	{
 		GameObject agentInstance = Instantiate( agentPrefab);
 		compteurAgent += 1;
-		agentInstance.transform.position = new Vector3(Random.Range(-sizeCam,sizeCam),0, Random.Range(-sizeCam,sizeCam));
+		if( position == 0)
+		{
+			agentInstance.transform.position = new Vector3(Random.Range(-sizeRectX1,sizeRectX1),0, Random.Range(-sizeRectZ1,sizeRectZ1));	
+		}
+		else
+		{
+			agentInstance.transform.position = new Vector3(Random.Range(-sizeRectX2,sizeRectX2),0, Random.Range(-sizeRectZ2,sizeRectZ2));
+		}
+
 
 		agentNavmesh.speed = speedAgent ;
-
+		agentInstance.tag = "Agent";
 		agentInstance.SetActive(true);
 	}
 

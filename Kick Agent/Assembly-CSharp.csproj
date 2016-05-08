@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\AgentScript.cs" />
      <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\KickAgent.cs" />
+     <Compile Include="Assets\Scripts\PersistentData.cs" />
      <Compile Include="Assets\Scripts\PopAgent.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\SoundsPlayer.cs" />
