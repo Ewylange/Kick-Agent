@@ -13,16 +13,19 @@ public class Score : MonoBehaviour {
 	[HideInInspector]public int highScore = 0;
 
 	public bool autoSave = true ;
-	public Vector3 pos;
+
+	string filePath;
 
 	BinaryFormatter formatter = new BinaryFormatter();
+	PersistentData persistentData = new PersistentData();
 
 
 	// Use this for initialization
 	void Start () {
 
+		filePath = Path.Combine (Application.persistentDataPath, "persistant.dat");
+
 		UpdateTexts ();
-		pos = new Vector3(459f,539f,0f);
 	}
 	
 	// Update is just a test
@@ -46,6 +49,7 @@ public class Score : MonoBehaviour {
 		if (score > highScore) {
 
 			highScore = score;
+			persistentData.highScore = score;
 		}
 
 		if (autoSave)
@@ -64,6 +68,9 @@ public class Score : MonoBehaviour {
 
 	public void SaveHighscore () {
 
+		using (FileStream stream = File.OpenWrite(filePath)) {
 
+			formatter.Serialize(stream, persistentData);
+		}
 	}
 }
