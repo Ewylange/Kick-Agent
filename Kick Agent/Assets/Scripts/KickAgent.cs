@@ -15,13 +15,15 @@ public class KickAgent : MonoBehaviour
 
 	AgentScript _scriptAgent = null;
 	public GameObject agent;
+	PopAgent _scriptPopAgent;
 
-
+	public GameObject agentEPetit;
 
 	// Use this for initialization
 	void Start () 
 	{
 		_scriptAgent = agent.GetComponent<AgentScript>();
+		_scriptPopAgent = GetComponent<PopAgent> ();
 	}
 	
 	// Update is called once per frame
@@ -45,6 +47,7 @@ public class KickAgent : MonoBehaviour
 					if (agentToKill.GetComponent<AgentScript> ().canKickAgent == true) {
 
 						Destroy (agentToKill);
+						_scriptPopAgent.compteurAgent -=1;
 						//Debug.Log("Agent Détruit");
 						SoundsPlayer.Instance.MakeExplosionSound ();
 						GameObject Exploded = Instantiate (explosionBleu, hitAgent.transform.position, Quaternion.identity) as GameObject;
@@ -61,6 +64,7 @@ public class KickAgent : MonoBehaviour
 					if (agentToKill.GetComponent<AgentFuyard> ().canKickAgent == true)
 					{
 						Destroy(agentToKill);
+						_scriptPopAgent.compteurAgent -=1;
 						SoundsPlayer.Instance.MakeExplosionSound();
 						GameObject Exploded = Instantiate(explosionMagenta, hitAgent.transform.position, Quaternion.identity) as GameObject;
 						score.IncrementScore();
@@ -74,11 +78,17 @@ public class KickAgent : MonoBehaviour
 				agentToKill = hitAgent.collider.gameObject;
 				if (agentToKill.GetComponent<AgentExplose>().canKickAgent == true)
 				{
+					
 					Destroy(agentToKill);
+					_scriptPopAgent.compteurAgent -=1;
 					SoundsPlayer.Instance.MakeExplosionSound();
 					GameObject Exploded = Instantiate(explosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
+					GameObject agentEPetitInstance = Instantiate (agentEPetit, hitAgent.transform.position,Quaternion.identity)as GameObject;
+					agentEPetitInstance.transform.tag = "AgentEPetit";
+
 					score.IncrementScore();
 					Destroy (Exploded, 0.32f);
+
 
 				}
 			}
@@ -90,9 +100,8 @@ public class KickAgent : MonoBehaviour
 				{
 					Destroy(agentToKill);
 					SoundsPlayer.Instance.MakeExplosionSound();
-					GameObject petiteExplosionVerte = explosionVerte;
-					petiteExplosionVerte.transform.localScale = petiteExplosionVerte.transform.localScale / 2;
-					GameObject Exploded = Instantiate(petiteExplosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
+
+					GameObject Exploded = Instantiate(explosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
 					score.IncrementScore();
 					Destroy (Exploded, 0.32f);
 				}

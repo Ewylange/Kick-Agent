@@ -30,6 +30,12 @@ public class AgentExplose : MonoBehaviour
 			agentE.speed = speedAgentE;
 		}
 
+		if (this.gameObject.tag == "AgentEPetit") 
+		{
+			agentE.SetDestination (Random.insideUnitSphere);
+			agentE.speed = speedAgentE;
+		}
+
 		_distanceToHole = Vector3.Distance (_hole.transform.position, transform.position);
 	
 
