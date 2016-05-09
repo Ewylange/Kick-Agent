@@ -14,7 +14,7 @@ public class Score : MonoBehaviour {
 
 	public bool autoSave = true ;
 
-	string filePath;
+	//string filePath;
 
 	BinaryFormatter formatter = new BinaryFormatter();
 	PersistentData persistentData = new PersistentData();
@@ -23,7 +23,7 @@ public class Score : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		filePath = Path.Combine (Application.persistentDataPath, "persistant.dat");
+		//filePath = Path.Combine (Application.persistentDataPath, "persistant.dat");
 
 		UpdateTexts ();
 	}
@@ -68,9 +68,9 @@ public class Score : MonoBehaviour {
 
 	public void SaveHighscore () {
 
-		using (FileStream stream = File.OpenWrite(filePath)) {
+		/*using (FileStream stream = File.OpenWrite(filePath)) {
 
 			formatter.Serialize(stream, persistentData);
-		}
+		}*/
 	}
 }
