@@ -62,4 +62,13 @@ public class AgentScript : MonoBehaviour {
 			canKickAgent = true;
 		}
 	}
+
+	void OnTriggerExit (Collider colExit)
+	{
+		if(colExit.gameObject.tag == "Bulle")
+		{
+			canKickAgent = false;
+		}
+	}
+
 }

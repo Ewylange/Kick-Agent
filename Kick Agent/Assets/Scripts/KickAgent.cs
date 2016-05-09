@@ -68,6 +68,36 @@ public class KickAgent : MonoBehaviour
 					}
 				}
 			}
+
+			if( hitAgent.transform.tag == "AgentEGros"   )
+			{	
+				agentToKill = hitAgent.collider.gameObject;
+				if (agentToKill.GetComponent<AgentExplose>().canKickAgent == true)
+				{
+					Destroy(agentToKill);
+					SoundsPlayer.Instance.MakeExplosionSound();
+					GameObject Exploded = Instantiate(explosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
+					score.IncrementScore();
+					Destroy (Exploded, 0.32f);
+
+				}
+			}
+
+			if( hitAgent.transform.tag == "AgentEPetit"   )
+			{	
+				agentToKill = hitAgent.collider.gameObject;
+				if (agentToKill.GetComponent<AgentExplose>().canKickAgent == true)
+				{
+					Destroy(agentToKill);
+					SoundsPlayer.Instance.MakeExplosionSound();
+					GameObject petiteExplosionVerte = explosionVerte;
+					petiteExplosionVerte.transform.localScale = petiteExplosionVerte.transform.localScale / 2;
+					GameObject Exploded = Instantiate(petiteExplosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
+					score.IncrementScore();
+					Destroy (Exploded, 0.32f);
+				}
+			}
+		
 		
 			
 			int shot = Random.Range(0,2);

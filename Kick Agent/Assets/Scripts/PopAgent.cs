@@ -50,7 +50,7 @@ public class PopAgent : MonoBehaviour
 	{
 //		speedAgent = Random.Range(speedMin, speedMax);
 		position = Random.Range(0,1);
-		typeAgent = Random.Range(0,2);
+		typeAgent = Random.Range(0,3);
 	}
 
 	void FixedUpdate () 
@@ -101,7 +101,7 @@ public class PopAgent : MonoBehaviour
 		{
 			agentInstance = Instantiate( agentEPrefab);
 			// Tag Agent Demultiplicateur
-			agentInstance.tag = "AgentE";
+			agentInstance.tag = "AgentEGros";
 			// Add AgentDemultiplicateur
 	
 			PositionPop();
