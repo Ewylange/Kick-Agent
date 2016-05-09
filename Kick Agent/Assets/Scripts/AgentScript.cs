@@ -8,10 +8,19 @@ public class AgentScript : MonoBehaviour {
 	NavMeshAgent agent;
 	public GameObject GatherPoint;
 	public float distanceToGatherPoint;
-	public bool canKickAgent;
-	public float activKickGatherPoint;
+	public float rayonGatherPoint;
+	public bool canKickAgent = false;
+//	public float distanceToPoint;
+//	public float rayonPoint;
 	public float distanceCircleRight;
 	float onCircle = 1.5f;
+	public PopAgent _scriptPopAgent;
+
+//	public GameObject pointLeft;
+//	public float rayonPointLeft = 4.5f;
+//
+//	public GameObject pointTopRight;
+//	public float rayonPointTopRight;
 
 
 	// Use this for initialization
@@ -23,23 +32,59 @@ public class AgentScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () 
-	{
-		agent.SetDestination(GatherPoint.transform.position);
+	{	
+		if(agent.tag =="Agent")
+		{
+			agent.SetDestination(GatherPoint.transform.position);
+		}
 		distanceToGatherPoint =  Vector3.Distance(GatherPoint.transform.position, transform.position);
 		if(distanceToGatherPoint < onCircle) 
 		{	
-			Debug.Log("Agent on Gather Point ");
+			//Debug.Log("Agent on Gather Point ");
 			// Détruire et enlever des points ? Trouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
+			SoundsPlayer.Instance.MakeAgentArrivalSound();
 			Destroy(this.gameObject);
+			_scriptPopAgent.compteurAgent -=1;
+
 			score.DecrementScore();
+
 			Debug.Log("Score -1");
+
 		}
-		//canKickAgent = false;
-		canKickAgent = true;
-		if (distanceToGatherPoint < activKickGatherPoint) 
+
+
+		//canKickAgent = true;
+		//canKickAgent = true;
+//		if (distanceToGatherPoint <= rayonGatherPoint) 
+//		{
+//			canKickAgent = true;
+//		}
+		//AgentInLight(pointLeft, rayonPointLeft);
+		//AgentInLight(pointTopRight, rayonPointTopRight);
+
+	}
+
+//	void AgentInLight(GameObject centerCircle, float rayonPoint)
+//	{
+//		distanceToPoint = Vector3.Distance(centerCircle.transform.position, transform.position);
+//		if (distanceToPoint <= rayonPoint) 
+//		{	
+//			Debug.Log("Distance TO KICK ");
+//			canKickAgent = true;
+//		}
+////		else
+////		{
+////			canKickAgent = false;
+////		}
+//	}
+
+
+	void OnTriggerEnter(Collider col) 
+	{
+		
+		if(col.gameObject.tag == "Bulle")
 		{
 			canKickAgent = true;
 		}
-	
 	}
 }
