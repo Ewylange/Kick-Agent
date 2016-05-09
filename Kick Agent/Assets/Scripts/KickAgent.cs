@@ -9,12 +9,14 @@ public class KickAgent : MonoBehaviour
 	float limitDetection = 1000;
 	GameObject agentToKill;
 
-	public GameObject explosion;
+	public GameObject explosionBleu;
+	public GameObject explosionVerte;
+	public GameObject explosionMagenta;
 
 	AgentScript _scriptAgent = null;
 	public GameObject agent;
 
-	LayerMask shader;
+
 
 	// Use this for initialization
 	void Start () 
@@ -34,23 +36,35 @@ public class KickAgent : MonoBehaviour
 
 			if(Physics.Raycast(ray, out hitAgent, limitDetection ))
 			{
-				if( hitAgent.transform.tag == "Agent" )
-				{	
-					Debug.Log("Agent Touché !! ");
+				if (hitAgent.transform.tag == "AgentB") {	
+					Debug.Log ("Agent Touché !! ");
 					// Détruire Agent 
 					agentToKill = hitAgent.collider.gameObject;
-					Debug.Log(_scriptAgent.canKickAgent);
-					if(agentToKill.GetComponent<AgentScript>().canKickAgent == true)
+					Debug.Log (_scriptAgent.canKickAgent);
+
+					if (agentToKill.GetComponent<AgentScript> ().canKickAgent == true) {
+
+						Destroy (agentToKill);
+						//Debug.Log("Agent Détruit");
+						SoundsPlayer.Instance.MakeExplosionSound ();
+						GameObject Exploded = Instantiate (explosionBleu, hitAgent.transform.position, Quaternion.identity) as GameObject;
+						// Augmenter le score
+						score.IncrementScore ();
+						//Debug.Log("Score + 1");
+
+						Destroy (Exploded, 0.32f);
+					}
+				}
+				if( hitAgent.transform.tag == "AgentF"   )
+				{	
+					agentToKill = hitAgent.collider.gameObject;
+					if (agentToKill.GetComponent<AgentFuyard> ().canKickAgent == true)
 					{
 						Destroy(agentToKill);
-						Debug.Log("Agent Détruit");
 						SoundsPlayer.Instance.MakeExplosionSound();
-						GameObject Exploded = Instantiate(explosion, hitAgent.transform.position, Quaternion.identity) as GameObject;
-						// Augmenter le score
+						GameObject Exploded = Instantiate(explosionMagenta, hitAgent.transform.position, Quaternion.identity) as GameObject;
 						score.IncrementScore();
-						Debug.Log("Score + 1");
-
-						Destroy(Exploded,0.32f);
+						Destroy (Exploded, 0.32f);
 					}
 				}
 			}
@@ -69,33 +83,5 @@ public class KickAgent : MonoBehaviour
 		
 		
 	}
-	
-//	void DetectAgent () 
-//	{
-//		
-//		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-//	//	Debug.DrawRay (ray.origin, -this.transform.forward * limitDetection);
-//
-//		if(Physics.Raycast(ray, out hitAgent, limitDetection ))
-//		{
-//			if( hitAgent.transform.tag == "Agent" )
-//			{	
-//				Debug.Log("Agent Touché !! ");
-//				// Détruire Agent 
-//				agentToKill = hitAgent.collider.gameObject;
-//				if( _scriptAgent.canKickAgent == true)
-//				{
-//					Destroy(agentToKill);
-//					Debug.Log("Agent Détruit");
-//					SoundsPlayer.Instance.MakeExplosionSound();
-//					GameObject Exploded = Instantiate(explosion, hitAgent.transform.position, Quaternion.identity) as GameObject;
-//					// Augmenter le score
-//					score.IncrementScore();
-//					Debug.Log("Score + 1");
-//					
-//					Destroy(Exploded,0.32f);
-//				}
-//			}
-//		}
-//	}
+
 }

@@ -4,7 +4,10 @@ using System.Collections.Generic;
 public class PopAgent : MonoBehaviour 
 {
 
-	public GameObject agentPrefab;
+	public GameObject agentBPrefab;
+	public GameObject agentFPrefab;
+	public GameObject agentEPrefab;
+	GameObject agentInstance;
 	//public float sizePool;
 
 	public float compteurAgent;
@@ -18,7 +21,7 @@ public class PopAgent : MonoBehaviour
 	AgentScript _scriptAgent;
 	NavMeshAgent agentNavmesh;
 
-	float speedAgent;
+//	float speedAgent;
 	public float speedMin;
 	public float speedMax;
 
@@ -38,14 +41,14 @@ public class PopAgent : MonoBehaviour
 	//	}
 	void Start()
 	{
-		agentPrefab.SetActive(true);
-		_scriptAgent = agentPrefab.GetComponent<AgentScript>();
-		agentNavmesh = _scriptAgent.GetComponent<NavMeshAgent>();
-		speedAgent = Random.Range(speedMin, speedMax);
+		//agentPrefab.SetActive(true);
+		//_scriptAgent = agentPrefab.GetComponent<AgentScript>();
+		//agentNavmesh = _scriptAgent.GetComponent<NavMeshAgent>();
+//		speedAgent = Random.Range(speedMin, speedMax);
 	}
 	void Update()
 	{
-		speedAgent = Random.Range(speedMin, speedMax);
+//		speedAgent = Random.Range(speedMin, speedMax);
 		position = Random.Range(0,1);
 		typeAgent = Random.Range(0,2);
 	}
@@ -62,8 +65,51 @@ public class PopAgent : MonoBehaviour
 
 	void PopAgentB()
 	{
-		GameObject agentInstance = Instantiate( agentPrefab);
+		//GameObject agentInstance = Instantiate( agentPrefab);
 		compteurAgent += 1;
+
+
+
+		//agentNavmesh.speed = speedAgent ;
+		//agentInstance.tag = "Agent";
+
+
+		if(typeAgent == 0)
+		{
+			agentInstance = Instantiate( agentBPrefab);
+			agentInstance.SetActive(true);
+			// TAG AGENT BASIC
+			agentInstance.tag = "AgentB";
+			// ADD SCRIPT AGENT BASIC
+				
+			PositionPop ();
+
+
+		}
+
+		if(typeAgent == 1)
+		{
+			 agentInstance = Instantiate( agentFPrefab);
+			// TAG AGENT Get OUT OF LIGHT RAPIDlY
+			agentInstance.tag = "AgentF";
+			// ADD SCRIPT AgentGetOutOfLight
+
+			PositionPop ();
+		}
+
+		if(typeAgent == 2) 
+		{
+			agentInstance = Instantiate( agentEPrefab);
+			// Tag Agent Demultiplicateur
+			agentInstance.tag = "AgentE";
+			// Add AgentDemultiplicateur
+	
+			PositionPop();
+		}
+	}
+
+	void PositionPop ()
+	{
 		if( position == 0)
 		{
 			agentInstance.transform.position = new Vector3(Random.Range(-sizeRectX1,sizeRectX1),0, Random.Range(-sizeRectZ1,sizeRectZ1));	
@@ -72,30 +118,5 @@ public class PopAgent : MonoBehaviour
 		{
 			agentInstance.transform.position = new Vector3(Random.Range(-sizeRectX2,sizeRectX2),0, Random.Range(-sizeRectZ2,sizeRectZ2));
 		}
-
-
-		agentNavmesh.speed = speedAgent ;
-		agentInstance.tag = "Agent";
-		agentInstance.SetActive(true);
-
-		if(typeAgent == 0)
-		{
-			// TAG AGENT BASIC
-			// ADD SCRIPT AGENT BASIC
-
-		}
-
-		if(typeAgent == 1)
-		{
-			// TAG AGENT Get OUT OF LIGHT RAPIDlY
-			// ADD SCRIPT AgentGetOutOfLight
-		}
-
-		if(typeAgent == 2) 
-		{
-			// Tag Agent Demultiplicateur
-			// Add AgentDemultiplicateur
-		}
 	}
-
 }

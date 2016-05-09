@@ -5,37 +5,33 @@ public class AgentScript : MonoBehaviour {
 
 	public Score score;
 
-	NavMeshAgent agent;
+	NavMeshAgent agentB;
+	public float agentSpeed;
 	public GameObject GatherPoint;
 	public float distanceToGatherPoint;
 	public float rayonGatherPoint;
 	public bool canKickAgent = false;
-//	public float distanceToPoint;
-//	public float rayonPoint;
+
 	public float distanceCircleRight;
 	float onCircle = 1.5f;
 	public PopAgent _scriptPopAgent;
 
-//	public GameObject pointLeft;
-//	public float rayonPointLeft = 4.5f;
-//
-//	public GameObject pointTopRight;
-//	public float rayonPointTopRight;
 
 
 	// Use this for initialization
 	void Start () 
 	{
-		agent = GetComponent<NavMeshAgent>();
+		agentB = GetComponent<NavMeshAgent>();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{	
-		if(agent.tag =="Agent")
+		if(agentB.tag =="AgentB")
 		{
-			agent.SetDestination(GatherPoint.transform.position);
+			agentB.SetDestination(GatherPoint.transform.position);
+			agentB.speed = agentSpeed;
 		}
 		distanceToGatherPoint =  Vector3.Distance(GatherPoint.transform.position, transform.position);
 		if(distanceToGatherPoint < onCircle) 
@@ -48,35 +44,14 @@ public class AgentScript : MonoBehaviour {
 
 			score.DecrementScore();
 
-			Debug.Log("Score -1");
+			//Debug.Log("Score -1");
 
 		}
 
 
-		//canKickAgent = true;
-		//canKickAgent = true;
-//		if (distanceToGatherPoint <= rayonGatherPoint) 
-//		{
-//			canKickAgent = true;
-//		}
-		//AgentInLight(pointLeft, rayonPointLeft);
-		//AgentInLight(pointTopRight, rayonPointTopRight);
-
+	
 	}
 
-//	void AgentInLight(GameObject centerCircle, float rayonPoint)
-//	{
-//		distanceToPoint = Vector3.Distance(centerCircle.transform.position, transform.position);
-//		if (distanceToPoint <= rayonPoint) 
-//		{	
-//			Debug.Log("Distance TO KICK ");
-//			canKickAgent = true;
-//		}
-////		else
-////		{
-////			canKickAgent = false;
-////		}
-//	}
 
 
 	void OnTriggerEnter(Collider col) 
