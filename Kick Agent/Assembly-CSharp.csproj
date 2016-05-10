@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AgentrunAway.cs" />
      <Compile Include="Assets\Scripts\AgentExplose.cs" />
      <Compile Include="Assets\Scripts\AgentFuyard.cs" />
      <Compile Include="Assets\Scripts\AgentScript.cs" />
