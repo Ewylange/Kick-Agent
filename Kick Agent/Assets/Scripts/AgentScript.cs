@@ -16,7 +16,8 @@ public class AgentScript : MonoBehaviour {
 	float onCircle = 1.5f;
 	public PopAgent _scriptPopAgent;
 
-
+	public float _rotateSpeed ;
+	public float _angleSpeed;
 
 	// Use this for initialization
 	void Start () 

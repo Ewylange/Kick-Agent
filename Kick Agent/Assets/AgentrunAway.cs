@@ -98,7 +98,7 @@ public class AgentrunAway : MonoBehaviour {
 			Debug.Log("FUI");
 			if(agentF.transform.tag == "AgentF")
 			{
-				agentF.SetDestination(-mousePosition);
+				agentF.SetDestination(-mousePosition.normalized * 20);
 				agentF.acceleration = 40;
 				agentF.speed = 10;
 			}

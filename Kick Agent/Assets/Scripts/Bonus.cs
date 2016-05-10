@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Bonus : MonoBehaviour {
 
@@ -9,6 +10,18 @@ public class Bonus : MonoBehaviour {
 	public float timer;
 
 	public bool got50;
+
+	Ray ray;
+	RaycastHit hit;
+	//public GameObject bombe;
+
+	private Vector3 mousePosition;
+	public Button buttonBombe;
+
+	public Sprite bombeDesactive;
+	public Sprite bombeCanActivate;
+	public Sprite bombeActive;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -18,47 +31,56 @@ public class Bonus : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (score >= 50  )
+		if (score.score >= 50 )
 		{
 			timer += Time.deltaTime;
 			if(timer < 2 )
 			{
 				canActiveBombe = true;
+				buttonBombe.image.sprite = bombeCanActivate;
 			}
 
-			if(timer > 2)
+			if(timer > 2 && activeBombe == true)
 			{
 				got50 = true;
 			}
 
 		}
 
-		activeBombe = false;
+	
 
-		if(activeBombe = true)
+		mousePosition = Input.mousePosition;
+		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+
+
+		if(Input.GetMouseButtonDown(0) && activeBombe == true) 
 		{
 			
+//			GameObject bombeInstance = Instantiate(bombe);
+//			bombeInstance.transform.position = new Vector3(mousePosition.x, 0, mousePosition.z);
+			this.transform.position = new Vector3(mousePosition.x, 0, mousePosition.z);
+			buttonBombe.image.sprite = bombeDesactive;
+			activeBombe = false;
+			canActiveBombe = false;
+			got50 = true;
+
+
 		}
+			
 
-
-
-		if(Input.GetMouseButtonDown(0)) 
-		{
-
-
-			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			//	Debug.DrawRay (ray.origin, -this.transform.forward * limitDetection);
-
-			if(Physics.Raycast(ray, out hitAgent, limitDetection ))
-			{
 	}
 
-	void ActivateBombe () 
+	public void ActivateBombe () 
 	{
-		if(canActiveBombe == true && got50 == false)
-		{
-			activeBombe = true;
-		}
-
+//		if(canActiveBombe == true )
+//		{
+//			activeBombe = true;
+//		}
+		activeBombe = true;
+		buttonBombe.image.sprite = bombeActive; 
+		// changer le sprite de la bombe aussi
 	}
+
+
 }
