@@ -32,7 +32,7 @@ public class AgentExplose : MonoBehaviour
 
 		if (this.gameObject.tag == "AgentEPetit") 
 		{
-			agentE.SetDestination (Random.insideUnitSphere);
+			agentE.SetDestination (new Vector3(Random.insideUnitSphere.x, 0, _hole.transform.position.z));
 			agentE.speed = speedAgentE;
 		}
 
