@@ -52,7 +52,7 @@ public class KickAgent : MonoBehaviour
 						SoundsPlayer.Instance.MakeExplosionSound ();
 						GameObject Exploded = Instantiate (explosionBleu, hitAgent.transform.position, Quaternion.identity) as GameObject;
 						// Augmenter le score
-						score.IncrementScore ();
+						score.IncrementScore (10);
 						//Debug.Log("Score + 1");
 
 						Destroy (Exploded, 0.32f);
@@ -67,7 +67,7 @@ public class KickAgent : MonoBehaviour
 						_scriptPopAgent.compteurAgent -=1;
 						SoundsPlayer.Instance.MakeExplosionSound();
 						GameObject Exploded = Instantiate(explosionMagenta, hitAgent.transform.position, Quaternion.identity) as GameObject;
-						score.IncrementScore();
+						score.IncrementScore(10);
 						Destroy (Exploded, 0.32f);
 					}
 				}
@@ -86,7 +86,7 @@ public class KickAgent : MonoBehaviour
 					GameObject agentEPetitInstance = Instantiate (agentEPetit, hitAgent.transform.position,Quaternion.identity)as GameObject;
 					agentEPetitInstance.transform.tag = "AgentEPetit";
 
-					score.IncrementScore();
+					score.IncrementScore(10);
 					Destroy (Exploded, 0.32f);
 
 
@@ -102,7 +102,7 @@ public class KickAgent : MonoBehaviour
 					SoundsPlayer.Instance.MakeExplosionSound();
 
 					GameObject Exploded = Instantiate(explosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
-					score.IncrementScore();
+					score.IncrementScore(10);
 					Destroy (Exploded, 0.32f);
 				}
 			}

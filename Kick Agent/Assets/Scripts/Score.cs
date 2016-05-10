@@ -14,39 +14,48 @@ public class Score : MonoBehaviour {
 
 	public bool autoSave = true ;
 
+
+
 	//string filePath;
 
 	BinaryFormatter formatter = new BinaryFormatter();
 	PersistentData persistentData = new PersistentData();
 
+	string filePath;
+
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 
-		//filePath = Path.Combine (Application.persistentDataPath, "persistant.dat");
-
+		filePath = Path.Combine (Application.persistentDataPath, "persistant.dat");
+		LoadHighScore();
 		UpdateTexts ();
 	}
 	
 	// Update is just a test
 	void Update(){
 
-		if (Input.GetKeyDown (KeyCode.A)) {
+		if (Input.GetKeyDown (KeyCode.A)) 
+		{
 
-			IncrementScore();
+			IncrementScore(2);
 		}
 	}
-	void UpdateTexts () {
+	void UpdateTexts () 
+	{
 
 		scoreText.text = score.ToString();
 		highScoreText.text = highScore.ToString ();
 	}
 
-	public void IncrementScore () {
+	public void IncrementScore (int pointIncrease) 
+	{
 
-		score += 10 ;
+		score += pointIncrease ;
 
-		if (score > highScore) {
+		if (score > highScore) 
+		{
 
 			highScore = score;
 			persistentData.highScore = score;
@@ -58,19 +67,44 @@ public class Score : MonoBehaviour {
 		UpdateTexts ();
 	}
 
-	public void DecrementScore () {
+	public void DecrementScore (int pointDecrease) 
+	{
 		
-		score -= 10 ;
+		score -= pointDecrease ;
 		
 		UpdateTexts ();
 	}
 
 
-	public void SaveHighscore () {
 
-		/*using (FileStream stream = File.OpenWrite(filePath)) {
+
+	public void SaveHighscore () 
+	{
+
+		using (FileStream stream = File.OpenWrite(filePath)) 
+		{
 
 			formatter.Serialize(stream, persistentData);
-		}*/
+		}
+	}
+
+
+	public void LoadHighScore () 
+	{
+		try 
+		{
+			using (FileStream stream = File.OpenRead(filePath))
+			{
+				persistentData = formatter.Deserialize(stream)as PersistentData;
+			}
+		}
+		catch(FileNotFoundException)
+		{
+			Debug.Log("No persistent data to load");
+		}
+		catch(InvalidCastException)
+		{
+			Debug.LogWarning("Persistent data class has changed");
+		}
 	}
 }

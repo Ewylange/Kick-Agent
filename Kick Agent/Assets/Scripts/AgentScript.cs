@@ -42,7 +42,7 @@ public class AgentScript : MonoBehaviour {
 			Destroy(this.gameObject);
 			_scriptPopAgent.compteurAgent -=1;
 
-			score.DecrementScore();
+			score.DecrementScore(10);
 
 			//Debug.Log("Score -1");
 

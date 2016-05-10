@@ -49,7 +49,7 @@ public class AgentExplose : MonoBehaviour
 			Destroy(this.gameObject);
 
 
-			score.DecrementScore();
+			score.DecrementScore(10);
 
 			//Debug.Log("Score -1");
 
