@@ -60,18 +60,19 @@ public class AgentrunAway : MonoBehaviour {
 
 		mousePosition = Input.mousePosition;
 		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-		_distanceToMouse = Vector3.Distance(mousePosition, transform.position);
+		_distanceToMouse = Vector3.Distance( transform.position, mousePosition);
 
 
 		switch(_state)
 		{
 
 			case State.GOHOLE :
-			
+			if(agentF.transform.tag == "AgentF")
+			{
 				agentF.SetDestination(_hole.transform.position);
 				agentF.speed = normalSpeed;
-
-				if(_distanceToMouse < 2) 
+			}
+			if(_distanceToMouse > 98 && _distanceToMouse < 108) 
 				{
 					_state = State.WAIT;
 				}
@@ -79,24 +80,31 @@ public class AgentrunAway : MonoBehaviour {
 				break;
 
 			case State.WAIT :
-
-			agentF.SetDestination(_hole.transform.position);
-			agentF.speed = slowSpeed;
-
+			if(agentF.transform.tag == "AgentF")
+			{
+				agentF.SetDestination(_hole.transform.position);
+				agentF.speed = slowSpeed;
+			}
+			Debug.Log("WAIT");
 			timer+= Time.deltaTime;
-			if(timer >2)
+			if(timer > 0.5f)
 			{
 				_state = State.FUI;
+				timer =0;
 			}
 				break;
 
 			case State.FUI :
-			agentF.SetDestination(-mousePosition);
-			agentF.acceleration = 40;
-			agentF.speed = 10;
-			if(_distanceToMouse > 10)
+			Debug.Log("FUI");
+			if(agentF.transform.tag == "AgentF")
 			{
-				
+				agentF.SetDestination(-mousePosition);
+				agentF.acceleration = 40;
+				agentF.speed = 10;
+			}
+			if(_distanceToMouse > 108 || _distanceToMouse < 98)
+			{
+				_state =State.GOHOLE;
 			}
 
 				break;

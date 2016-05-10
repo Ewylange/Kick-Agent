@@ -51,6 +51,10 @@ public class PopAgent : MonoBehaviour
 //		speedAgent = Random.Range(speedMin, speedMax);
 		position = Random.Range(0,1);
 		typeAgent = Random.Range(0,3);
+		if(compteurAgent < nbreMaxAgent)
+		{
+			PopAgentB();
+		}
 	}
 
 	void FixedUpdate () 
