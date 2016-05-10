@@ -84,7 +84,11 @@ public class KickAgent : MonoBehaviour
 					SoundsPlayer.Instance.MakeExplosionSound();
 					GameObject Exploded = Instantiate(explosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
 					GameObject agentEPetitInstance = Instantiate (agentEPetit, hitAgent.transform.position,Quaternion.identity)as GameObject;
+					GameObject agentEPetitInstance2 = Instantiate (agentEPetit, hitAgent.transform.position,Quaternion.identity)as GameObject;
+
 					agentEPetitInstance.transform.tag = "AgentEPetit";
+					agentEPetitInstance2.transform.tag = "AgentEPetit";
+
 
 					score.IncrementScore(10);
 					Destroy (Exploded, 0.32f);

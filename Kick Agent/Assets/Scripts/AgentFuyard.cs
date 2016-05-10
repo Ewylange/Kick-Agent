@@ -25,7 +25,7 @@ public class AgentFuyard : MonoBehaviour
 	enum State : int 
 	{
 		GOHOLE,
-		INLIGHTHOLE,
+	
 		FUI
 
 	}

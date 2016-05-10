@@ -61,6 +61,7 @@ public class Score : MonoBehaviour {
 			persistentData.highScore = score;
 		}
 
+		SaveHighscore();
 		if (autoSave)
 			SaveHighscore ();
 
