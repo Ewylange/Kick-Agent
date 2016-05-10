@@ -8,7 +8,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class Score : MonoBehaviour {
 
 	public Text scoreText;
+	public Text menuScoreText;
 	public Text highScoreText;
+	public Text menuHighScoreText;
 	public int score = 0;
 	[HideInInspector]public int highScore = 0;
 
@@ -46,7 +48,10 @@ public class Score : MonoBehaviour {
 	{
 
 		scoreText.text = score.ToString();
+		menuScoreText.text = score.ToString ();
 		highScoreText.text = highScore.ToString ();
+		menuHighScoreText.text = highScore.ToString ();
+
 	}
 
 	public void IncrementScore (int pointIncrease) 

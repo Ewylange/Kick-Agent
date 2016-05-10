@@ -7,7 +7,7 @@ public class GameTimer : MonoBehaviour {
 
 	public Text timeText;
 
-	public float time = 512f;
+	public float time = 30f;
 
 	public GameObject menuPause;
 
@@ -25,7 +25,8 @@ public class GameTimer : MonoBehaviour {
 
 	void UpdateTexts () {
 	    
-		timeText.text = time.ToString();
+		float realTime = Mathf.Floor(time / 66f) ;
+		timeText.text = realTime.ToString();
 
 	}
 
