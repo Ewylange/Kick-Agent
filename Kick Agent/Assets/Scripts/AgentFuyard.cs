@@ -6,8 +6,12 @@ public class AgentFuyard : MonoBehaviour
 
 	NavMeshAgent agentF;
 	public PopAgent _scriptPopAgent;
+	public GameObject explosionMagenta;
+
 
 	public Score score;
+	public int ajoutScore;
+	public int enleverScore;
 
 	public GameObject _hole;
 	public bool canKickAgent;
@@ -20,6 +24,10 @@ public class AgentFuyard : MonoBehaviour
 	float _rayonLightHole;
 	float onCircle = 1.5f;
 
+	public GameObject _bombe;
+	public float _distanceToBombe;
+	public float distanceBombeDestroy;
+	Vector3 positionBombe;
 
 
 	enum State : int 
@@ -37,6 +45,8 @@ public class AgentFuyard : MonoBehaviour
 	{
 		agentF = GetComponent<NavMeshAgent>();
 		_state = State.GOHOLE;
+		positionBombe = _bombe.transform.position;
+
 	}
 	
 	// Update is called once per frame
@@ -57,9 +67,24 @@ public class AgentFuyard : MonoBehaviour
 			Destroy(this.gameObject);
 
 
-			score.DecrementScore(10);
+			score.DecrementScore(enleverScore);
 
-			//Debug.Log("Score -1");
+
+		}
+
+
+		_distanceToBombe = Vector3.Distance(_bombe.transform.position, transform.position);
+
+		if(_distanceToBombe < distanceBombeDestroy) 
+		{
+			SoundsPlayer.Instance.MakeAgentArrivalSound();
+			_scriptPopAgent.compteurAgent -=1;
+			agentF.Stop ();
+			Destroy(this.gameObject);
+			GameObject Exploded = Instantiate(explosionMagenta, transform.position, Quaternion.identity) as GameObject;
+			Destroy (Exploded, 0.32f);
+			score.IncrementScore(ajoutScore);
+			_bombe.transform.position = positionBombe;
 
 		}
 		switch (_state) 
