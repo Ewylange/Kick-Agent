@@ -24,11 +24,12 @@ public class AgentFuyard : MonoBehaviour
 	float _rayonLightHole;
 	float onCircle = 1.5f;
 
-	public GameObject _bombe;
+	public GameObject bombe;
 	public float _distanceToBombe;
 	public float distanceBombeDestroy;
+	public float timeExplosed = 0.32f;
 	Vector3 positionBombe;
-
+	float timerBombe;
 
 	enum State : int 
 	{
@@ -45,7 +46,7 @@ public class AgentFuyard : MonoBehaviour
 	{
 		agentF = GetComponent<NavMeshAgent>();
 		_state = State.GOHOLE;
-		positionBombe = _bombe.transform.position;
+		positionBombe = bombe.transform.position;
 
 	}
 	
@@ -54,8 +55,7 @@ public class AgentFuyard : MonoBehaviour
 	{	
 
 		_distanceToHole = Vector3.Distance (_hole.transform.position, transform.position);
-//		Vector3 directionFuite = new Vector3(Random.Range(-1,1),0, Random.Range(-1,1));
-//		Vector3 directionFuite2 = new Vector3(-1,0,1);
+
 
 		if(_distanceToHole < onCircle) 
 		{	
@@ -73,7 +73,7 @@ public class AgentFuyard : MonoBehaviour
 		}
 
 
-		_distanceToBombe = Vector3.Distance(_bombe.transform.position, transform.position);
+		_distanceToBombe = Vector3.Distance(bombe.transform.position, transform.position);
 
 		if(_distanceToBombe < distanceBombeDestroy) 
 		{
@@ -82,29 +82,33 @@ public class AgentFuyard : MonoBehaviour
 			agentF.Stop ();
 			Destroy(this.gameObject);
 			GameObject Exploded = Instantiate(explosionMagenta, transform.position, Quaternion.identity) as GameObject;
-			Destroy (Exploded, 0.32f);
 			score.IncrementScore(ajoutScore);
-			_bombe.transform.position = positionBombe;
+			Destroy (Exploded, timeExplosed);
+			timerBombe += Time.deltaTime;
+			if(timerBombe > 1f)
+			{
+				bombe.transform.position = positionBombe;
+				timerBombe = 0;
+			}
 
 		}
 		switch (_state) 
 		{
 
 		case State.GOHOLE:
-			if (transform.gameObject.tag == "AgentF") {
+			if (transform.gameObject.tag == "AgentF" && transform.gameObject != null) {
 
 				agentF.SetDestination (_hole.transform.position);
 				agentF.speed = normalSpeed;
 				agentF.acceleration = normalAccel;
-				if (canKickAgent == true && _distanceToHole > 10) {
+				if (canKickAgent == true /*&& _distanceToHole > 10*/) {
 					_state = State.FUI;
-					Debug.Log ("Passe a l'etat Fui");
 				}
 			}
 			break;
 
 		case State.FUI:
-			if (transform.gameObject.tag == "AgentF") 
+			if (transform.gameObject.tag == "AgentF" && transform.gameObject != null) 
 			{
 				agentF.acceleration = fuiAccel;
 				agentF.speed = fuiSpeed;

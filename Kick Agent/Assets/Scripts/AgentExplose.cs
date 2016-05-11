@@ -19,16 +19,18 @@ public class AgentExplose : MonoBehaviour
 	public float _distanceToHole;
 	float onCircle = 1.5f;
 
-	public GameObject _bombe;
+	public GameObject bombe;
 	public float _distanceToBombe;
 	public float distanceBombeDestroy;
+	public float timeExplosed = 0.32f;
 	Vector3 positionBombe;
+	float timerBombe;
 
 	// Use this for initialization
 	void Start () 
 	{
 		agentE = GetComponent<NavMeshAgent>();
-		positionBombe = _bombe.transform.position;
+		positionBombe = bombe.transform.position;
 
 	}
 	
@@ -66,7 +68,7 @@ public class AgentExplose : MonoBehaviour
 
 		}
 
-		_distanceToBombe = Vector3.Distance(_bombe.transform.position, transform.position);
+		_distanceToBombe = Vector3.Distance(bombe.transform.position, transform.position);
 
 		if(_distanceToBombe < distanceBombeDestroy) 
 		{
@@ -75,9 +77,16 @@ public class AgentExplose : MonoBehaviour
 			agentE.Stop ();
 			Destroy(this.gameObject);
 			GameObject Exploded = Instantiate(explosionVerte, transform.position, Quaternion.identity) as GameObject;
+			Destroy (Exploded, timeExplosed);
 			score.IncrementScore(ajoutScore);
-			Destroy (Exploded, 0.32f);
-			_bombe.transform.position = positionBombe;
+			timerBombe += Time.deltaTime;
+
+			if(timerBombe > 1f)
+			{
+				bombe.transform.position = positionBombe;
+				timerBombe = 0;
+			}
+
 		}
 
 	}

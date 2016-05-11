@@ -12,8 +12,13 @@ public class KickAgent : MonoBehaviour
 	public GameObject explosionBleu;
 	public GameObject explosionVerte;
 	public GameObject explosionMagenta;
+	public float timeExplosion = 0.32f;
+	public int scoreIncreaseBlue;
+	public int scoreIncreaseMagenta;
+	public int scoreIncreaseBigGreen;
+	public int scoreIncreaseLittleGreen;
 
-	AgentScript _scriptAgent = null;
+//	AgentScript _scriptAgent;
 	public GameObject agent;
 	PopAgent _scriptPopAgent;
 
@@ -22,7 +27,7 @@ public class KickAgent : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		_scriptAgent = agent.GetComponent<AgentScript>();
+		//_scriptAgent = agent.GetComponent<AgentScript>();
 		_scriptPopAgent = GetComponent<PopAgent> ();
 	}
 	
@@ -34,41 +39,29 @@ public class KickAgent : MonoBehaviour
 
 
 			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			//	Debug.DrawRay (ray.origin, -this.transform.forward * limitDetection);
+
 
 			if(Physics.Raycast(ray, out hitAgent, limitDetection ))
 			{
-				if (hitAgent.transform.tag == "AgentB") {	
-					//Debug.Log ("Agent Touché !! ");
-					// Détruire Agent 
+				if (hitAgent.transform.tag == "AgentB") 
+				{	
+
 					agentToKill = hitAgent.collider.gameObject;
-					//Debug.Log (_scriptAgent.canKickAgent);
+
 
 					if (agentToKill.GetComponent<AgentScript> ().canKickAgent == true) {
 
-						Destroy (agentToKill);
-						_scriptPopAgent.compteurAgent -=1;
-						//Debug.Log("Agent Détruit");
-						SoundsPlayer.Instance.MakeExplosionSound ();
-						GameObject Exploded = Instantiate (explosionBleu, hitAgent.transform.position, Quaternion.identity) as GameObject;
-						// Augmenter le score
-						score.IncrementScore (10);
-						//Debug.Log("Score + 1");
 
-						Destroy (Exploded, 0.32f);
+						Destroy(agentToKill, explosionBleu, scoreIncreaseBlue);
 					}
 				}
-				if( hitAgent.transform.tag == "AgentF"   )
+				if( hitAgent.transform.tag == "AgentF")
 				{	
 					agentToKill = hitAgent.collider.gameObject;
+
 					if (agentToKill.GetComponent<AgentFuyard> ().canKickAgent == true)
 					{
-						Destroy(agentToKill);
-						_scriptPopAgent.compteurAgent -=1;
-						SoundsPlayer.Instance.MakeExplosionSound();
-						GameObject Exploded = Instantiate(explosionMagenta, hitAgent.transform.position, Quaternion.identity) as GameObject;
-						score.IncrementScore(10);
-						Destroy (Exploded, 0.32f);
+						Destroy(agentToKill, explosionMagenta, scoreIncreaseMagenta);
 					}
 				}
 			}
@@ -90,8 +83,8 @@ public class KickAgent : MonoBehaviour
 					agentEPetitInstance2.transform.tag = "AgentEPetit";
 
 
-					score.IncrementScore(10);
-					Destroy (Exploded, 0.32f);
+					score.IncrementScore(scoreIncreaseLittleGreen);
+					Destroy (Exploded, timeExplosion);
 
 
 				}
@@ -102,12 +95,8 @@ public class KickAgent : MonoBehaviour
 				agentToKill = hitAgent.collider.gameObject;
 				if (agentToKill.GetComponent<AgentExplose>().canKickAgent == true)
 				{
-					Destroy(agentToKill);
-					SoundsPlayer.Instance.MakeExplosionSound();
 
-					GameObject Exploded = Instantiate(explosionVerte, hitAgent.transform.position, Quaternion.identity) as GameObject;
-					score.IncrementScore(10);
-					Destroy (Exploded, 0.32f);
+					Destroy(agentToKill, explosionVerte, scoreIncreaseBigGreen);
 				}
 			}
 		
@@ -125,6 +114,15 @@ public class KickAgent : MonoBehaviour
 		
 		
 		
+	}
+
+	void Destroy(GameObject objectDestroyed, GameObject explosion, int scoreDecrease)
+	{
+		Destroy(objectDestroyed);
+		GameObject Exploded = Instantiate(explosion, hitAgent.transform.position, Quaternion.identity) as GameObject;
+		score.IncrementScore(scoreDecrease);
+		Destroy (Exploded, timeExplosion);
+		SoundsPlayer.Instance.MakeExplosionSound();
 	}
 
 }

@@ -66,7 +66,7 @@ public class Bonus : MonoBehaviour {
 			activeBombe = false;
 			canActiveBombe = false;
 			got50 = true;
-			Destroy (Exploded, 0.32f);
+			Destroy (Exploded, 0.5f);
 
 
 

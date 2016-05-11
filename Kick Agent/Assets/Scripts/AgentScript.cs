@@ -13,10 +13,12 @@ public class AgentScript : MonoBehaviour {
 	public int ajoutScore;
 	public int enleverScore;
 
-	public GameObject _bombe;
-	public float _distanceToBombe;
+	public GameObject bombe;
+	public float distanceToBombe;
 	public float distanceBombeDestroy;
+	public float timeExplosed = 0.32f ;
 	Vector3 positionBombe;
+	float timerBombe;
 
 
 	public GameObject GatherPoint;
@@ -25,17 +27,16 @@ public class AgentScript : MonoBehaviour {
 	public bool canKickAgent = false;
 
 	public float distanceCircleRight;
-	float onCircle = 1.5f;
+	float onCircle = 2f;
 	public PopAgent _scriptPopAgent;
 
-	public float _rotateSpeed ;
-	public float _angleSpeed;
+
 
 	// Use this for initialization
 	void Start () 
 	{
 		agentB = GetComponent<NavMeshAgent>();
-		positionBombe = _bombe.transform.position;
+		positionBombe = bombe.transform.position;
 
 	
 	}
@@ -63,19 +64,26 @@ public class AgentScript : MonoBehaviour {
 
 		}
 
-		_distanceToBombe = Vector3.Distance(_bombe.transform.position, transform.position);
+		distanceToBombe = Vector3.Distance(bombe.transform.position, transform.position);
 
-		if(_distanceToBombe < distanceBombeDestroy) 
+		if(distanceToBombe < distanceBombeDestroy) 
 		{
+			
 			//Debug.Log("Agent on Gather Point ");
 			// Détruire et enlever des points ? Trouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
 			SoundsPlayer.Instance.MakeAgentArrivalSound();
 			Destroy(this.gameObject);
 			_scriptPopAgent.compteurAgent -=1;
 			GameObject Exploded = Instantiate (explosionBleu, transform.position, Quaternion.identity) as GameObject;
-			Destroy (Exploded, 0.32f);
+			Destroy (Exploded, timeExplosed);
 			score.IncrementScore(ajoutScore);
-			_bombe.transform.position = positionBombe;
+
+			timerBombe += Time.deltaTime;
+			if(timerBombe > 1f)
+			{
+				bombe.transform.position = positionBombe;
+				timerBombe = 0;
+			}
 
 		}
 	
