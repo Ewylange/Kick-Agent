@@ -10,6 +10,7 @@ public class Bonus : MonoBehaviour {
 	public float timer;
 
 	public bool got50;
+	public GameObject explosion;
 
 	Ray ray;
 	RaycastHit hit;
@@ -60,10 +61,15 @@ public class Bonus : MonoBehaviour {
 //			GameObject bombeInstance = Instantiate(bombe);
 //			bombeInstance.transform.position = new Vector3(mousePosition.x, 0, mousePosition.z);
 			this.transform.position = new Vector3(mousePosition.x, 0, mousePosition.z);
+			GameObject Exploded = Instantiate(explosion, this.transform.position, Quaternion.identity) as GameObject;
 			buttonBombe.image.sprite = bombeDesactive;
 			activeBombe = false;
 			canActiveBombe = false;
 			got50 = true;
+			Destroy (Exploded, 0.32f);
+
+
+
 
 
 		}

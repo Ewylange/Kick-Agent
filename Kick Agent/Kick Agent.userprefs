@@ -1,17 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PopAgent.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Bonus.cs">
     <Files>
-      <File FileName="Assets/Scripts/AutoSave.cs" Line="19" Column="48" />
-      <File FileName="Assets/Scripts/PersistentData.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/Score.cs" Line="64" Column="19" />
-      <File FileName="Assets/Scripts/AgentExplose.cs" Line="35" Column="95" />
-      <File FileName="Assets/Scripts/AgentFuyard.cs" Line="34" Column="1" />
-      <File FileName="Assets/Scripts/AgentScript.cs" Line="45" Column="27" />
-      <File FileName="Assets/Scripts/KickAgent.cs" Line="116" Column="4" />
-      <File FileName="Assets/Scripts/HoleMove.cs" Line="26" Column="27" />
-      <File FileName="Assets/AgentrunAway.cs" Line="91" Column="11" />
-      <File FileName="Assets/Scripts/PopAgent.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Bonus.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
