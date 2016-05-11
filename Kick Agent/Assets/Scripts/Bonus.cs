@@ -36,7 +36,7 @@ public class Bonus : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (score.score >= 50 )
+		if (score.score >= 300 )
 		{
 			timer += Time.deltaTime;
 			if(timer < 2 )
@@ -61,9 +61,6 @@ public class Bonus : MonoBehaviour {
 
 		if(Input.GetMouseButtonDown(0) && activeBombe == true) 
 		{
-			
-//			GameObject bombeInstance = Instantiate(bombe);
-//			bombeInstance.transform.position = new Vector3(mousePosition.x, 0, mousePosition.z);
 			this.transform.position = new Vector3(mousePosition.x, 0, mousePosition.z);
 			GameObject Exploded = Instantiate(explosion, this.transform.position, Quaternion.identity) as GameObject;
 			buttonBombe.image.sprite = bombeDesactive;
@@ -72,10 +69,8 @@ public class Bonus : MonoBehaviour {
 			got50 = true;
 			Destroy (Exploded, 0.5f);
 
-
-
-
 		}
+
 		if(hasExplosed == true)
 		{
 			timerBombe += Time.deltaTime;
@@ -93,13 +88,9 @@ public class Bonus : MonoBehaviour {
 
 	public void ActivateBombe () 
 	{
-//		if(canActiveBombe == true )
-//		{
-//			activeBombe = true;
-//		}
+
 		activeBombe = true;
 		buttonBombe.image.sprite = bombeActive; 
-		// changer le sprite de la bombe aussi
 	}
 
 
