@@ -36,7 +36,7 @@ public class Bonus : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (score.score >= 300 )
+		if (score.score >= 1000f )
 		{
 			timer += Time.deltaTime;
 			if(timer < 2 )

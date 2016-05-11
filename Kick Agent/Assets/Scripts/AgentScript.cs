@@ -17,7 +17,7 @@ public class AgentScript : MonoBehaviour {
 	public float distanceToBombe;
 	public float distanceBombeDestroy;
 	public float timeExplosed = 0.32f ;
-	Vector3 positionBombe;
+
 	float timerBombe;
 
 
@@ -37,7 +37,6 @@ public class AgentScript : MonoBehaviour {
 	{
 		agentB = GetComponent<NavMeshAgent>();
 
-		positionBombe = bombe.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -77,12 +76,7 @@ public class AgentScript : MonoBehaviour {
 			GameObject Exploded = Instantiate (explosionBleu, transform.position, Quaternion.identity) as GameObject;
 			Destroy (Exploded, timeExplosed);
 			score.IncrementScore(ajoutScore);
-//			timerBombe += Time.deltaTime;
-//			if(timerBombe > 1f)
-//			{
-//				bombe.transform.position = positionBombe;
-//				timerBombe = 0;
-//			}
+
 
 		}
 	

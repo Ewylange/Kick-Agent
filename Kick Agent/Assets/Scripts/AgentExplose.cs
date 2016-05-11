@@ -23,14 +23,14 @@ public class AgentExplose : MonoBehaviour
 	public float _distanceToBombe;
 	public float distanceBombeDestroy;
 	public float timeExplosed = 0.32f;
-	Vector3 positionBombe;
-	float timerBombe;
+
+
 
 	// Use this for initialization
 	void Start () 
 	{
 		agentE = GetComponent<NavMeshAgent>();
-		positionBombe = bombe.transform.position;
+
 
 	}
 	
@@ -82,14 +82,7 @@ public class AgentExplose : MonoBehaviour
 			Destroy (Exploded, timeExplosed);
 			score.IncrementScore(ajoutScore);
 
-//			timerBombe += Time.deltaTime;
-//
-//			if(timerBombe > 1f)
-//			{
-//				bombe.transform.position = positionBombe;
-//				timerBombe = 0;
-//			}
-
+		
 		}
 
 	}

@@ -28,7 +28,7 @@ public class AgentFuyard : MonoBehaviour
 	public float _distanceToBombe;
 	public float distanceBombeDestroy;
 	public float timeExplosed = 0.32f;
-	Vector3 positionBombe;
+
 	float timerBombe;
 
 	enum State : int 
@@ -46,7 +46,7 @@ public class AgentFuyard : MonoBehaviour
 	{
 		agentF = GetComponent<NavMeshAgent>();
 		_state = State.GOHOLE;
-		positionBombe = bombe.transform.position;
+
 
 	}
 	
@@ -87,13 +87,7 @@ public class AgentFuyard : MonoBehaviour
 			Destroy (Exploded, timeExplosed);
 
 
-//			timerBombe += Time.deltaTime;
-//			if(timerBombe > 1f)
-//			{
-//				bombe.transform.position = positionBombe;
-//				timerBombe = 0;
-//			}
-
+	
 		}
 		switch (_state) 
 		{
