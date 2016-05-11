@@ -72,6 +72,8 @@ public class AgentExplose : MonoBehaviour
 
 		if(_distanceToBombe < distanceBombeDestroy) 
 		{
+			bombe.GetComponent<Bonus>().hasExplosed = true;
+
 			SoundsPlayer.Instance.MakeAgentArrivalSound();
 			_scriptPopAgent.compteurAgent -=1;
 			agentE.Stop ();
@@ -79,13 +81,14 @@ public class AgentExplose : MonoBehaviour
 			GameObject Exploded = Instantiate(explosionVerte, transform.position, Quaternion.identity) as GameObject;
 			Destroy (Exploded, timeExplosed);
 			score.IncrementScore(ajoutScore);
-			timerBombe += Time.deltaTime;
 
-			if(timerBombe > 1f)
-			{
-				bombe.transform.position = positionBombe;
-				timerBombe = 0;
-			}
+//			timerBombe += Time.deltaTime;
+//
+//			if(timerBombe > 1f)
+//			{
+//				bombe.transform.position = positionBombe;
+//				timerBombe = 0;
+//			}
 
 		}
 

@@ -23,10 +23,14 @@ public class Bonus : MonoBehaviour {
 	public Sprite bombeCanActivate;
 	public Sprite bombeActive;
 
+	public bool hasExplosed;
+	public float timerBombe;
+	Vector3 positionBombe;
+
 	// Use this for initialization
 	void Start () 
 	{
-	
+		positionBombe = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -71,8 +75,18 @@ public class Bonus : MonoBehaviour {
 
 
 
-
 		}
+		if(hasExplosed == true)
+		{
+			timerBombe += Time.deltaTime;
+			if(timerBombe > 1f)
+			{
+				transform.position = positionBombe;
+				timerBombe = 0;
+				hasExplosed = false;
+			}
+		}
+
 			
 
 	}

@@ -36,9 +36,8 @@ public class AgentScript : MonoBehaviour {
 	void Start () 
 	{
 		agentB = GetComponent<NavMeshAgent>();
-		positionBombe = bombe.transform.position;
 
-	
+		positionBombe = bombe.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -68,7 +67,8 @@ public class AgentScript : MonoBehaviour {
 
 		if(distanceToBombe < distanceBombeDestroy) 
 		{
-			
+			bombe.GetComponent<Bonus>().hasExplosed = true;
+
 			//Debug.Log("Agent on Gather Point ");
 			// Détruire et enlever des points ? Trouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
 			SoundsPlayer.Instance.MakeAgentArrivalSound();
@@ -77,13 +77,12 @@ public class AgentScript : MonoBehaviour {
 			GameObject Exploded = Instantiate (explosionBleu, transform.position, Quaternion.identity) as GameObject;
 			Destroy (Exploded, timeExplosed);
 			score.IncrementScore(ajoutScore);
-
-			timerBombe += Time.deltaTime;
-			if(timerBombe > 1f)
-			{
-				bombe.transform.position = positionBombe;
-				timerBombe = 0;
-			}
+//			timerBombe += Time.deltaTime;
+//			if(timerBombe > 1f)
+//			{
+//				bombe.transform.position = positionBombe;
+//				timerBombe = 0;
+//			}
 
 		}
 	

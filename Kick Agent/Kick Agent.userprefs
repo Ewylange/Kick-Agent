@@ -2,24 +2,20 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AgentScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/AutoSave.cs" Line="19" Column="48" />
-      <File FileName="Assets/Scripts/PersistentData.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/Score.cs" Line="23" Column="34" />
-      <File FileName="Assets/Scripts/AgentExplose.cs" Line="24" Column="35" />
-      <File FileName="Assets/Scripts/AgentFuyard.cs" Line="72" Column="1" />
-      <File FileName="Assets/Scripts/AgentScript.cs" Line="39" Column="3" />
-      <File FileName="Assets/Scripts/KickAgent.cs" Line="85" Column="39" />
+      <File FileName="Assets/Scripts/AgentExplose.cs" Line="58" Column="38" />
+      <File FileName="Assets/Scripts/AgentFuyard.cs" Line="34" Column="10" />
+      <File FileName="Assets/Scripts/AgentScript.cs" Line="33" Column="2" />
+      <File FileName="Assets/Scripts/KickAgent.cs" Line="96" Column="1" />
       <File FileName="Assets/Scripts/HoleMove.cs" Line="26" Column="27" />
-      <File FileName="Assets/AgentrunAway.cs" Line="88" Column="1" />
-      <File FileName="Assets/Scripts/PopAgent.cs" Line="27" Column="2" />
+      <File FileName="Assets/Scripts/PopAgent.cs" Line="107" Column="1" />
       <File FileName="Assets/Scripts/LoadScene.cs" Line="15" Column="3" />
-      <File FileName="Assets/Scripts/Bonus.cs" Line="63" Column="45" />
+      <File FileName="Assets/Scripts/Bonus.cs" Line="35" Column="25" />
       <File FileName="Assets/Scripts/GameTimer.cs" Line="44" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/charlene/Kick-Agent/Kick Agent/Assets/Scripts/AgentExplose.cs" line="83" column="3" />
+      <Breakpoint file="/Users/charlene/Kick-Agent/Kick Agent/Assets/Scripts/AgentExplose.cs" line="92" column="3" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

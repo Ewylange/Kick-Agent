@@ -77,6 +77,7 @@ public class AgentFuyard : MonoBehaviour
 
 		if(_distanceToBombe < distanceBombeDestroy) 
 		{
+			bombe.GetComponent<Bonus>().hasExplosed = true;
 			SoundsPlayer.Instance.MakeAgentArrivalSound();
 			_scriptPopAgent.compteurAgent -=1;
 			agentF.Stop ();
@@ -84,12 +85,14 @@ public class AgentFuyard : MonoBehaviour
 			GameObject Exploded = Instantiate(explosionMagenta, transform.position, Quaternion.identity) as GameObject;
 			score.IncrementScore(ajoutScore);
 			Destroy (Exploded, timeExplosed);
-			timerBombe += Time.deltaTime;
-			if(timerBombe > 1f)
-			{
-				bombe.transform.position = positionBombe;
-				timerBombe = 0;
-			}
+
+
+//			timerBombe += Time.deltaTime;
+//			if(timerBombe > 1f)
+//			{
+//				bombe.transform.position = positionBombe;
+//				timerBombe = 0;
+//			}
 
 		}
 		switch (_state) 
