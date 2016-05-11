@@ -102,6 +102,7 @@ public class Score : MonoBehaviour {
 			using (FileStream stream = File.OpenRead(filePath))
 			{
 				persistentData = formatter.Deserialize(stream)as PersistentData;
+			
 			}
 		}
 		catch(FileNotFoundException)

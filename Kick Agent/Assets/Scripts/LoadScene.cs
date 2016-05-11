@@ -15,6 +15,7 @@ public class LoadScene : MonoBehaviour {
 		
 		Application.LoadLevel(level);
 
+
 	}
 	
 	

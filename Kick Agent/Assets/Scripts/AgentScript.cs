@@ -36,6 +36,7 @@ public class AgentScript : MonoBehaviour {
 	{
 		agentB = GetComponent<NavMeshAgent>();
 		positionBombe = _bombe.transform.position;
+
 	
 	}
 	

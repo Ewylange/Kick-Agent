@@ -39,6 +39,8 @@ public class GameTimer : MonoBehaviour {
 			Time.timeScale = 0f;
 			time = 0;
 			menuPause.SetActive(true);
+		} else {
+			Time.timeScale = 1f;
 		}
 
 		UpdateTexts ();
