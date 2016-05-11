@@ -1,21 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Bonus.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Bonus.cs" Line="39" Column="27" />
-      <File FileName="Assets\Scripts\AgentExplose.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AgentFuyard.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AgentScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\KickAgent.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HoleMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PopAgent.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LoadScene.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameTimer.cs" Line="1" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/charlene/Kick-Agent/Kick Agent/Assets/Scripts/AgentExplose.cs" line="92" column="3" />
+      <Breakpoint file="/Users/charlene/Kick-Agent/Kick Agent/Assets/Scripts/AgentExplose.cs" line="95" column="3" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

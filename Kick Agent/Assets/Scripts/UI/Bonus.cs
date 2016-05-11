@@ -36,7 +36,7 @@ public class Bonus : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (score.score >= 1000f )
+		if (score.score >= 2000f )
 		{
 			timer += Time.deltaTime;
 			if(timer < 2 )
@@ -79,6 +79,7 @@ public class Bonus : MonoBehaviour {
 				transform.position = positionBombe;
 				timerBombe = 0;
 				hasExplosed = false;
+				activeBombe = false;
 			}
 		}
 
