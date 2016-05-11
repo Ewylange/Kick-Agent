@@ -45,21 +45,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AgentrunAway.cs" />
-     <Compile Include="Assets\Scripts\AgentExplose.cs" />
-     <Compile Include="Assets\Scripts\AgentFuyard.cs" />
-     <Compile Include="Assets\Scripts\AgentScript.cs" />
-     <Compile Include="Assets\Scripts\AutoSave.cs" />
-     <Compile Include="Assets\Scripts\Bonus.cs" />
-     <Compile Include="Assets\Scripts\GameTimer.cs" />
-     <Compile Include="Assets\Scripts\HoleMove.cs" />
-     <Compile Include="Assets\Scripts\KickAgent.cs" />
-     <Compile Include="Assets\Scripts\LoadScene.cs" />
-     <Compile Include="Assets\Scripts\Obstacles.cs" />
-     <Compile Include="Assets\Scripts\PersistentData.cs" />
-     <Compile Include="Assets\Scripts\PopAgent.cs" />
-     <Compile Include="Assets\Scripts\Score.cs" />
-     <Compile Include="Assets\Scripts\SoundsPlayer.cs" />
+     <Compile Include="Assets\Scripts\Autres\LoadScene.cs" />
+     <Compile Include="Assets\Scripts\Autres\PersistentData.cs" />
+     <Compile Include="Assets\Scripts\Autres\SoundsPlayer.cs" />
+     <Compile Include="Assets\Scripts\Environnement\HoleMove.cs" />
+     <Compile Include="Assets\Scripts\Environnement\Obstacles.cs" />
+     <Compile Include="Assets\Scripts\IA\AgentExplose.cs" />
+     <Compile Include="Assets\Scripts\IA\AgentFuyard.cs" />
+     <Compile Include="Assets\Scripts\IA\AgentScript.cs" />
+     <Compile Include="Assets\Scripts\IA\AgentrunAway.cs" />
+     <Compile Include="Assets\Scripts\IA\AutoSave.cs" />
+     <Compile Include="Assets\Scripts\IA\KickAgent.cs" />
+     <Compile Include="Assets\Scripts\IA\PopAgent.cs" />
+     <Compile Include="Assets\Scripts\UI\Bonus.cs" />
+     <Compile Include="Assets\Scripts\UI\GameTimer.cs" />
+     <Compile Include="Assets\Scripts\UI\Score.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
