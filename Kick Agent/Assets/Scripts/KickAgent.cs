@@ -39,10 +39,10 @@ public class KickAgent : MonoBehaviour
 			if(Physics.Raycast(ray, out hitAgent, limitDetection ))
 			{
 				if (hitAgent.transform.tag == "AgentB") {	
-					Debug.Log ("Agent Touché !! ");
+					//Debug.Log ("Agent Touché !! ");
 					// Détruire Agent 
 					agentToKill = hitAgent.collider.gameObject;
-					Debug.Log (_scriptAgent.canKickAgent);
+					//Debug.Log (_scriptAgent.canKickAgent);
 
 					if (agentToKill.GetComponent<AgentScript> ().canKickAgent == true) {
 

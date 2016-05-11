@@ -15,6 +15,7 @@ public class AgentScript : MonoBehaviour {
 
 	public GameObject _bombe;
 	public float _distanceToBombe;
+	public float distanceBombeDestroy;
 	Vector3 positionBombe;
 
 
@@ -63,7 +64,7 @@ public class AgentScript : MonoBehaviour {
 
 		_distanceToBombe = Vector3.Distance(_bombe.transform.position, transform.position);
 
-		if(_distanceToBombe < 2) 
+		if(_distanceToBombe < distanceBombeDestroy) 
 		{
 			//Debug.Log("Agent on Gather Point ");
 			// Détruire et enlever des points ? Trouver un truc loufoque ou inhabituel a faire si l'ennemi atteint le point 
