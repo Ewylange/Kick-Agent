@@ -51,7 +51,6 @@
      <Compile Include="Assets\Scripts\AgentScript.cs" />
      <Compile Include="Assets\Scripts\AutoSave.cs" />
      <Compile Include="Assets\Scripts\Bonus.cs" />
-     <Compile Include="Assets\Scripts\ChangeSprite.cs" />
      <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\HoleMove.cs" />
      <Compile Include="Assets\Scripts\KickAgent.cs" />
